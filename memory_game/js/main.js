@@ -1,4 +1,4 @@
-//define and monitor cards in play
+//define cards
 const cards = [
 {
 	rank: "queen",
@@ -55,5 +55,16 @@ function flipCard () {
 }
 }
 
-
 createBoard();
+
+//my failed attempt to reset game
+function resetGame() {
+	var cardElement = document.getElementsByTagName('img');
+	cardElement.setAttribute('src', 'images/back.png');
+};
+//add 4 more cards to board
+function addMoreCards() {
+	var cardElement = document.getElementById('add-cards');
+	cardElement.addEventListener('click', createBoard);
+};
+addMoreCards();

@@ -54,6 +54,11 @@ font-family: "Droid Serif", serif;
 img {
 	margin: 40px 8px 0 8px;
 }
+button {
+	padding: 10px;
+	font-size: 18px;
+	margin: 10px 0 0 0;
+}
 footer {
 	text-transform: uppercase;
 	background-color: #0D2C40;
