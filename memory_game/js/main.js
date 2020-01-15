@@ -21,11 +21,22 @@ const cards = [
 	cardImage: "images/king-of-diamonds.png"
 }
 ];
-
+//monitor chosen cards
 const cardsInPlay = [];
 
+//put cards on page
+function createBoard() {
+	for (let i = 0; i < cards.length; i++) {
+		var cardElement = document.createElement('img');
+		cardElement.setAttribute('src', 'images/back.png');
+		cardElement.setAttribute('data-id', i);
+		cardElement.addEventListener('click', flipCard);
+		document.getElementById('game-board').appendChild(cardElement);
+	}
+}
+
 //check for match and alert users of result
-function checkForMatch() {
+var checkForMatch = function() {
 	if (cardsInPlay[0] === cardsInPlay[1]) {
   		alert("You found a match!");
 	} else {
@@ -33,18 +44,16 @@ function checkForMatch() {
 }
 }
 
-//flip card and put flipped cards in console
-function flipCard (cardId) {
-	if (cardsInPlay.length === 2) {
+//flip card and show them to user, then check for match
+function flipCard () {
+	var cardId = this.getAttribute('data-id');
+	//add user's choices to array
+	cardsInPlay.push(cards[cardId].rank);
+	this.setAttribute('src', cards[cardId].cardImage);
+		if (cardsInPlay.length === 2) {
 	checkForMatch();
 }
-	console.log ("User flipped " + cards[cardId].rank);
-	console.log (cards[cardId].suit);
-	console.log (cards[cardId].cardImage);
-//add user's choices to array
-	cardsInPlay.push(cards[cardId].rank);
 }
 
-flipCard(0);
-flipCard(1);
-checkForMatch();
+
+createBoard();
